@@ -15,7 +15,7 @@ import static onliner.projectOnlinerCucumber.testrunner.RunnerCucumber.softAsser
 public class TvPage extends BasePage {
 
   private String cbxMaker = "//ul//input[@type='checkbox' and @value='%s']";
-  private String fieldPrice = "//input[@placeholder='до']";
+  private String fieldPrice = "//input[contains(@data-bind,'facet.placeholder.to')]";
   private String cbxResolution = "//input[@type='checkbox' and @value='%s']";
   private By fieldMinDiagonal =
           By.xpath("//select[contains(@data-bind, 'value: facet.value.from')]");
