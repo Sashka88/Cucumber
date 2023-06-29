@@ -7,10 +7,11 @@ import org.openqa.selenium.By;
 public class MainPage extends BasePage {
 
   private String lblNavigation = "//span[@class='b-main-navigation__text'][contains(text(), '%s')]";
-  private static By pageLocator = By.xpath("//nav[@class='b-top-navigation']");
+  private Label lblPage = new Label(By.xpath("//nav[@class='b-top-navigation']"));
 
   public MainPage() {
-    super(pageLocator);
+    super();
+    checkPageElementIsDisplayed(lblPage);
   }
 
   public MainPage navigateSection(String sectionName) {

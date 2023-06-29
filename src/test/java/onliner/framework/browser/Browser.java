@@ -1,17 +1,21 @@
 package onliner.framework.browser;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
+
+import java.util.concurrent.TimeUnit;
 
 import static onliner.framework.browser.DriverFactory.getWebDriver;
 
 public class Browser {
   public static WebDriver driver;
-  public static SoftAssert softAssert;
+  public static JavascriptExecutor executor;
 
-  public Browser(String driverName){
-    Browser.driver = getWebDriver(driverName);
-    softAssert = new SoftAssert();
+  public Browser() {
+    Browser.driver = getWebDriver();
+    Browser.executor = (JavascriptExecutor) driver;
   }
 
   public void maximizeWindow() {
@@ -22,7 +26,16 @@ public class Browser {
     driver.get(url);
   }
 
+  public void rejectCookies() {
+    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    driver.findElement(By.id("rejectAllButton")).click();
+  }
+
   public void quitBrowser() {
     driver.quit();
+  }
+
+  public boolean checkIfUrlContains(String urlPart) {
+    return driver.getCurrentUrl().contains(urlPart);
   }
 }

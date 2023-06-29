@@ -1,4 +1,4 @@
-package onliner.framework;
+package onliner.framework.services;
 
 import java.util.ResourceBundle;
 

@@ -9,10 +9,12 @@ public class CatalogPage extends BasePage {
   private String lblMenuName = "//span[contains(text(), '%s')]";
   private String lblSubMenuName = "//div[@class='catalog-navigation-list__aside-title'][contains(text(), '%s')]";
   private String lblNextPage = "//div[contains(@class, 'catalog-navigation-list__aside-item_active')]//span[contains(text(),'%s')]";
-  private static By pageLocator = By.xpath("//div[@class = 'catalog-navigation__title']");
+  private Label lblPage = new Label(By.xpath("//div[@class = 'catalog-navigation__title']"));
 
   public CatalogPage(String title) {
-    super(title, pageLocator);
+    super();
+    checkPageElementIsDisplayed(lblPage);
+    checkPageTitle(title, lblPage);
   }
 
   public CatalogPage navigateMenu(String menuName) {

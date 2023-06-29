@@ -8,7 +8,7 @@ import onliner.projectOnlinerCucumber.page.CatalogPage;
 import onliner.projectOnlinerCucumber.page.TvPage;
 import onliner.projectOnlinerCucumber.page.MainPage;
 
-import static onliner.framework.browser.Browser.softAssert;
+import static onliner.projectOnlinerCucumber.testrunner.RunnerCucumber.softAssert;
 
 
 public class SearchTvSteps {
