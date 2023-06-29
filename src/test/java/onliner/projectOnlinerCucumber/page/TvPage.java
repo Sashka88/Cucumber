@@ -83,6 +83,7 @@ public class TvPage extends BasePage {
   }
 
   public TvPage vailidatePrice(String price) {
+    waitUntilVisibilityOfAllElementsLocated(searchResults);
     waitUntilElementToBeInvisible(animation);
     List<Label> productPrices = priceResults.getElementsList();
     softAssert.assertTrue(productPrices.stream().allMatch(productPrice -> Double.parseDouble(productPrice.getText().substring(0, 7).replaceAll(",", ".")) <= Double.parseDouble(price)),

@@ -12,19 +12,20 @@ public class DriverFactory {
 
     public static WebDriver getWebDriver() {
         switch (System.getProperty("browser")) {
-            case "Chrome" -> {
+            case "Chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("disable-popup-blocking");
                 options.addArguments("--safebrowsing-disable-download-protection");
                 options.addArguments("safebrowsing-disable-extension-blacklist");
                 driver = new ChromeDriver(options);
-            }
-            case "Firefox" -> {
+                break;
+            case "Firefox":
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
-            }
-            default -> throw new RuntimeException("Incorrect Browser Name");
+                break;
+            default:
+                throw new RuntimeException("Incorrect Browser Name");
         }
         return driver;
     }
