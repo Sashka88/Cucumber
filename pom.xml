@@ -54,6 +54,9 @@
                     <!--suppress UnresolvedMavenProperty -->
                     <suiteXmlFile>src/test/resources/${testngFile}</suiteXmlFile>
                 </suiteXmlFiles>
+                    <argLine>
+                        -Dfile.encoding=UTF8
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>
