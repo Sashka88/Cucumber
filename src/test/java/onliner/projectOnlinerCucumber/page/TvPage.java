@@ -75,16 +75,16 @@ public class TvPage extends BasePage {
   }
 
   public TvPage vailidateMaker(String tvMaker) {
-    waitUntilVisibilityOfAllElementsLocated(searchResults);
     waitUntilElementToBeInvisible(animation);
+    waitUntilVisibilityOfAllElementsLocated(searchResults);
     List<Label> currentTvMakers = makerResults.getElementsList();
     softAssert.assertTrue(currentTvMakers.stream().allMatch(currentTvMaker -> currentTvMaker.getText().contains(tvMaker)), "TvMaker is incorrect");
     return this;
   }
 
   public TvPage vailidatePrice(String price) {
-    waitUntilVisibilityOfAllElementsLocated(searchResults);
     waitUntilElementToBeInvisible(animation);
+    waitUntilVisibilityOfAllElementsLocated(searchResults);
     List<Label> productPrices = priceResults.getElementsList();
     softAssert.assertTrue(productPrices.stream().allMatch(productPrice -> Double.parseDouble(productPrice.getText().substring(0, 7).replaceAll(",", ".")) <= Double.parseDouble(price)),
             "Price is more than " + Double.parseDouble(price));
@@ -93,6 +93,7 @@ public class TvPage extends BasePage {
 
   public TvPage vailidateDiagonal(String minDiagonal, String maxDiagonal) {
     waitUntilElementToBeInvisible(animation);
+    waitUntilVisibilityOfAllElementsLocated(searchResults);
     List<Label> productDescriptions = descriptionResults.getElementsList();
     softAssert.assertTrue(productDescriptions.stream().allMatch(productDescription -> Integer.parseInt(productDescription.getText().substring(0, 2)) <= Integer.parseInt(maxDiagonal)), "Max diagonal is incorrect");
     softAssert.assertTrue(productDescriptions.stream().allMatch(productDescription -> Integer.parseInt(productDescription.getText().substring(0, 2)) >= Integer.parseInt(minDiagonal)), "Min diagonal is incorrect");
@@ -101,6 +102,7 @@ public class TvPage extends BasePage {
 
   public TvPage vailidateResolution(String resolution) {
     waitUntilElementToBeInvisible(animation);
+    waitUntilVisibilityOfAllElementsLocated(searchResults);
     List<Label> productDescriptions = descriptionResults.getElementsList();
     softAssert.assertTrue(productDescriptions.stream().allMatch(productDescription -> productDescription.getText().contains(resolution)), "Tv resolution is incorrect");
     return this;
